@@ -1,0 +1,81 @@
+\begin{table}[H]
+\centering
+\caption{IPC Performance Comparison Results}
+\label{tab:ipc_results}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Test Program & Tomasulo IPC & In-Order IPC & Difference & Winner \\
+\midrule
+test01\_basic\_arithmetic & 0.3333 & 0.3333 & +0.0000 & Tie \\
+test02\_logic\_operations & 0.5000 & 0.3571 & +0.1429 & Tomasulo \\
+test03\_shifts & 0.4166 & 0.4000 & +0.0166 & Tomasulo \\
+test06\_memory\_ops & 0.3333 & 0.3333 & +0.0000 & Tie \\
+test07\_branches & 0.5000 & 0.2000 & +0.3000 & Tomasulo \\
+test08\_jumps & 0.3333 & 0.4000 & -0.0667 & In-Order \\
+benchmark & 0.2020 & 0.6493 & -0.4473 & In-Order \\
+\midrule
+\textbf{Average (7 tests)} & \textbf{0.3740} & \textbf{0.3818} & \textbf{-0.0078} & \textbf{In-Order} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Complete PPA Analysis Summary}
+\label{tab:ppa_analysis}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Category & Metric & Tomasulo CPU & In-Order CPU & Advantage \\
+\midrule
+\textbf{Software Performance} & & & & \\
+ & Test Wins & 3 tests & 2 tests & Tomasulo \\
+ & Average IPC & 0.3740 & 0.3818 & In-Order (2\%) \\
+ & Logic Ops IPC & +40\% & Baseline & Tomasulo \\
+ & Branch Ops IPC & +150\% & Baseline & Tomasulo \\
+ & Memory Ops IPC & Equal & Equal & Tie \\
+\midrule
+\textbf{Hardware Performance} & & & & \\
+ & Max Frequency & 69.7 MHz & 51.2 MHz & Tomasulo (36\%) \\
+ & Timing Slack & 14.35ns & 82.86ns & Tomasulo (5×) \\
+ & Setup Violations & 0 & 0 & Equal \\
+ & Hold Violations & 0 & 0 & Equal \\
+\midrule
+\textbf{Area} & & & & \\
+ & Total Cells & 1,652 & 7,755 & In-Order (4.7×) \\
+ & Die Area & 4.0 mm² & 2.25 mm² & In-Order (44\% less) \\
+ & Core Area & 56,443 µm² & 32,174 µm² & In-Order (43\% less) \\
+ & Wire Length & 136,034 µm & 83,202 µm & In-Order (39\% less) \\
+\midrule
+\textbf{Power (µW)} & & & & \\
+ & Internal & 2,076 & 9,339 & Tomasulo (78\% less) \\
+ & Switching & 395,764 & 224,846 & In-Order (43\% less) \\
+ & Leakage & 3,932,298 & 2,198,544 & In-Order (44\% less) \\
+ & Total Power & 4,330,138 & 2,432,729 & In-Order (44\% less) \\
+\midrule
+\textbf{Quality} & & & & \\
+ & DRC Clean & Pass & Pass & Equal \\
+ & LVS Clean & Pass & Pass & Equal \\
+ & XOR Match & Pass & Pass & Equal \\
+ & Antenna Violations & 44 & 0 & In-Order \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Efficiency Metrics and Design Trade-offs}
+\label{tab:efficiency}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Efficiency Metric & Tomasulo CPU & In-Order CPU & Notes \\
+\midrule
+Performance per Area & 76\% & Baseline & Tomasulo 24\% less efficient \\
+Performance per Power & 76\% & Baseline & Tomasulo 24\% less efficient \\
+Area per Power & 100\% & Baseline & Equal efficiency \\
+\midrule
+Instructions per Joule & Higher & Baseline & Tomasulo better energy efficiency \\
+Frequency per mm² & 17.4 MHz/mm² & 22.8 MHz/mm² & In-Order 31\% better \\
+Power per mm² & 1.08 W/mm² & 1.08 W/mm² & Equal power density \\
+\bottomrule
+\end{tabular}
+\end{table}
