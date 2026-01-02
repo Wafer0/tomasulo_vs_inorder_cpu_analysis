@@ -1,10 +1,12 @@
 \documentclass[12pt]{article}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=0.8in]{geometry}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{booktabs}
 \usepackage{xcolor}
 \usepackage{hyperref}
+\usepackage{lscape}
+\usepackage{adjustbox}
 
 \title{RISC-V CPU Performance Analysis: Tomasulo vs In-Order Pipeline}
 \author{Andreas Tzitzikas}
@@ -106,6 +108,7 @@ Ties & 2 & 2 & N/A \\
 
 \begin{table}[H]
 \centering
+\footnotesize
 \caption{Complete PPA (Performance, Power, Area) Comparison}
 \label{tab:ppa_complete}
 \begin{tabular}{@{}lcccc@{}}
@@ -229,6 +232,7 @@ The power consumption analysis reveals the true cost of complexity:
 
 \begin{table}[H]
 \centering
+\footnotesize
 \caption{PPA Trade-offs and Optimization Analysis}
 \label{tab:ppa_tradeoffs}
 \begin{tabular}{@{}lcccc@{}}
